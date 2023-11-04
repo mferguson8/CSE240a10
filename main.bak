@@ -1,5 +1,7 @@
+(#%require (lib "27.ss" "srfi"))
+
 (define (play_guess target attempts)
-  (define (guess-game target attempts)
+  (define (guess-game target attempts) 
     (display "Guess a number from 1 to 100:")
     (newline)
     (let loop ((attempts-left attempts)
@@ -17,7 +19,7 @@
               (display name)
               (newline)
               (newline)
-              (play_guess (+ (random 99) 1) 1)))
+              (play_guess (+ (random-integer 99) 1) 1)))
           (begin
             (display "Enter guess ")
             (flush-output)
@@ -38,7 +40,7 @@
                           (display name)
                           (newline)
                           (newline)
-                          (play_guess (+ (random 99) 1) 1)))
+                          (play_guess (+ (random-integer 99) 1) 1)))
                       (if (< guess target)
                           (begin
                             (display "Lower...")
@@ -51,5 +53,4 @@
   
   (guess-game target attempts))
 
-(play_guess (+ (random 99) 1) 1)
-
+(play_guess (+ (random-integer 99) 1) 1)
